@@ -115,4 +115,8 @@ public class ItemInventarioService {
         }
         return itemRepository.save(novoItem);
     }
+
+    public List<ItemInventario> listarTodosInativos() {
+        return itemRepository.findByIsAtivoFalse();
+    }
 }

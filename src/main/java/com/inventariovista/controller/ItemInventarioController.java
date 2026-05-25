@@ -59,4 +59,10 @@ public class ItemInventarioController {
         ItemInventario itemTransferido = itemService.transferirItem(id, novaUnidadeId, motivo);
         return ResponseEntity.ok(itemTransferido);
     }
+
+    @GetMapping("/inativos")
+    public ResponseEntity<List<ItemInventario>> listarInativos() {
+        List<ItemInventario> inativos = itemService.listarTodosInativos();
+        return ResponseEntity.ok(inativos);
+    }
 }

@@ -12,16 +12,14 @@ public interface ItemInventarioRepository extends JpaRepository<ItemInventario, 
 
     // 1. O painel principal: Traz todos os itens, MAS apenas os ativos
     List<ItemInventario> findByIsAtivoTrue();
-
     // 2. O filtro da tela: Traz itens ativos de uma UNIDADE específica (Estoril ou Savassi)
     List<ItemInventario> findByUnidadeIdAndIsAtivoTrue(Long unidadeId);
-
     // 3. O filtro de categoria: Traz itens ativos de uma categoria (ex: Cozinha)
     List<ItemInventario> findByCategoriaIdAndIsAtivoTrue(Long categoriaId);
-
     // 4. Segurança contra duplicidade: Busca item pelo Número de Patrimônio
     Optional<ItemInventario> findByCodigoPatrimonio(String codigoPatrimonio);
-
     // 5. Busca item pelo Número de Série (útil para o importador Python não duplicar itens)
     Optional<ItemInventario> findByNumeroSerie(String numeroSerie);
+    // 6. Busca todos os itens que foram "deletados visualmente" para auditoria
+    List<ItemInventario> findByIsAtivoFalse();;
 }
